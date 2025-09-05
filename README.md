@@ -93,5 +93,20 @@ Este projeto tem como finalidade aplicar os conceitos de **APIs REST com Spring 
    ```
    http://localhost:8080
    ```
+5. Acesse no database no navegador:
+   ```
+   http://localhost:8080/h2-console
+   ```
+6. Dados de login:
 
+    JDBC URL:
+    ```
+    jdbc:h2:mem:autoescola
+    ```
+    Usuário:
+    ```
+    sa
+    ```
+   não tem senha
+  
 ---

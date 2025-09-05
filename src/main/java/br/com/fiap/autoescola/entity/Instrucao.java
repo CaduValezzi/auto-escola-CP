@@ -29,4 +29,13 @@ public class Instrucao {
 
     @Column(nullable = false)
     private boolean ativa = true; // usado pra cancelamento
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private MotivoCancelamento motivoCancelamento;
+
+    @Column
+    private LocalDateTime canceladaEm;
+
+
 }

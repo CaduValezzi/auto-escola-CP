@@ -74,6 +74,8 @@ public class InstrucaoService {
 
         instrucaoRepository.save(instrucao);
 
+
+
         return new InstrucaoResponseDTO(
                 instrucao.getId(),
                 aluno.getNome(),
@@ -82,4 +84,32 @@ public class InstrucaoService {
                 instrucao.isAtiva()
         );
     }
+    public InstrucaoResponseDTO cancelar(Long id, CancelamentoInstrucaoDTO dto) {
+        Instrucao instrucao = instrucaoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Instrução não encontrada"));
+
+        if (!instrucao.isAtiva()) {
+            throw new RuntimeException("Instrução já está cancelada");
+        }
+
+        // regra: mínimo 24h antes
+        if (instrucao.getDataHora().isBefore(LocalDateTime.now().plusHours(24))) {
+            throw new RuntimeException("Instrução só pode ser cancelada com 24h de antecedência");
+        }
+
+        instrucao.setAtiva(false);
+        instrucao.setMotivoCancelamento(dto.getMotivo());
+        instrucao.setCanceladaEm(LocalDateTime.now());
+
+        instrucaoRepository.save(instrucao);
+
+        return new InstrucaoResponseDTO(
+                instrucao.getId(),
+                instrucao.getAluno().getNome(),
+                instrucao.getInstrutor().getNome(),
+                instrucao.getDataHora(),
+                instrucao.isAtiva()
+        );
+    }
+
 }

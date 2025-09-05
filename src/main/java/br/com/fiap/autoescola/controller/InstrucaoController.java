@@ -1,5 +1,6 @@
 package br.com.fiap.autoescola.controller;
 
+import br.com.fiap.autoescola.dto.CancelamentoInstrucaoDTO;
 import br.com.fiap.autoescola.dto.InstrucaoRequestDTO;
 import br.com.fiap.autoescola.dto.InstrucaoResponseDTO;
 import br.com.fiap.autoescola.service.InstrucaoService;
@@ -18,5 +19,11 @@ public class InstrucaoController {
     public InstrucaoResponseDTO agendar(@RequestBody @Valid InstrucaoRequestDTO dto) {
         return instrucaoService.agendar(dto);
     }
+    @DeleteMapping("/{id}")
+    public InstrucaoResponseDTO cancelar(@PathVariable Long id,
+                                         @RequestBody @Valid CancelamentoInstrucaoDTO dto) {
+        return instrucaoService.cancelar(id, dto);
+    }
+
 }
 
