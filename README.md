@@ -79,11 +79,11 @@ Este projeto tem como finalidade aplicar os conceitos de **APIs REST com Spring 
 ## 🛠️ Como Rodar o Projeto
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/api-autoescola.git
+   git clone https://github.com/CaduValezzi/auto-escola-CP.git
    ```
 2. Acesse a pasta do projeto:
    ```bash
-   cd api-autoescola
+   cd auto-escola-CP
    ```
 3. Compile e rode:
    ```bash
